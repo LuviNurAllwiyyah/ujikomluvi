@@ -26,5 +26,21 @@ class UserSeeder extends Seeder
         $admin->password = bcrypt('rahasia');
         $admin->save();
         $admin->attachRole($adminRole);
+
+        //membuat user admin role
+        $adminRole = new User;
+        $adminRole->name ='Luvi';
+        $adminRole->email = 'admin@gmail.com';
+        $adminRole->password = bcrypt('rahasia');
+        $adminRole->save();
+        $adminRole->attachRole($adminRole);
+
+        //membuat user admin
+        $admin = new User;
+        $admin->name ='Luvi';
+        $admin->email = 'admin@gmail.com';
+        $admin->password = bcrypt('rahasia');
+        $admin->save();
+        $admin->attachRole($admin);
     }
 }

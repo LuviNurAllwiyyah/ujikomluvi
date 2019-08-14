@@ -19,10 +19,10 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'backend', 'middleware' => ['auth', 'role:superadmin']], function(){
-
-    Route::get('/', function(){
-        return 'halo';
-    });
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::resource('user', 'UserController');
+    Route::resource('pembeli', 'PembeliController');
 });
+    
+
+

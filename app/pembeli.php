@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class pembeli extends Model
 {
-    protected $fillable = ['pembeli_no_ktp', 'pembeli_nama', 'pembeli_alamat', 'pembeli_telpon', 'pembeli_hp'];
+    protected $fillable = ['no_ktp', 'nama', 'alamat', 'telpon', 'hp'];
     public $timestamps = true;
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
+    }
+
 }
