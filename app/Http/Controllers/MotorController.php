@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Motor;
+use App\motor;
+use Session;
 
 class MotorController extends Controller
 {
@@ -14,13 +15,8 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = Motor::all();
-        $response = [
-            'success' => true,
-            'data' => $motor,
-            'message' => 'Berhasil disimpan'
-        ];
-        return response()->json(response, 200);
+        $motor = motor::orderBy('created_at', 'desc')->get();
+        return view('Motor.index', compact('motor'));
     }
 
     /**
@@ -41,12 +37,12 @@ class MotorController extends Controller
      */
     public function store(Request $request)
     {
-        $motor = new Motor;
-        $motor->motor_merk = $request->get('motor_merk');
-        $motor->motor_type = $request->get('motor_type');
-        $motor->motor_warna_pilihan = $request->get('motor_warna_pilihan');
-        $motor->motor_harga = $request->get('motor_harga');
-        $motor->mmotor_gambar = $request->get('motor_gambar');
+        $motor = new motor;
+        $motor->merk = $request->get('merk');
+        $motor->type = $request->get('type');
+        $motor->warna = $request->get('warna');
+        $motor->harga = $request->get('harga');
+        $motor->gambar = $request->get('gambar');
         $response = [
             'success' => true,
             'data' => $motor,

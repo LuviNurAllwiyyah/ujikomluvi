@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::resource('user', 'UserController');
+    Route::resource('motor', 'MotorController');
     Route::resource('pembeli', 'PembeliController');
 });
     

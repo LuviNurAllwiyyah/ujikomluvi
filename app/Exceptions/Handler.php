@@ -1,4 +1,5 @@
-<?php
+$pembeli = pembeli::orderBy('created_at', 'desc')->get();
+        return view('Pembeli.index', compact('pembeli'));<?php
 
 namespace App\Exceptions;
 
